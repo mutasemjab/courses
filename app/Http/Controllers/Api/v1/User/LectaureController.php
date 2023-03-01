@@ -15,7 +15,6 @@ class LectaureController extends Controller
     {
        $lectaures = Lectaure::with('course')->get();
         foreach ($lectaures as $lectaure) {
-            $lectaure->video = json_decode($lectaure->video, true);
             $lectaure->data = json_decode($lectaure->data, true);
         }
 

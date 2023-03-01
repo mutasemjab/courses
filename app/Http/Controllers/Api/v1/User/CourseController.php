@@ -62,7 +62,6 @@ class CourseController extends Controller
         foreach($lectaures as $lectaure){
 
            array_push($filterlectaures,$lectaure);
-              $lectaure->video = json_decode($lectaure->video, true);
            $lectaure->data = json_decode($lectaure->data, true);
 
        }
