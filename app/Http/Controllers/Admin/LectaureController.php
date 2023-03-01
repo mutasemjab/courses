@@ -33,24 +33,25 @@ class LectaureController extends Controller
         try{
             $lectaure = new Lectaure();
             $lectaure->name = $request->get('name');
+            $lectaure->video = $request->get('video');
 
             $lectaure->course_id=$request->get('course');
             $lectaure->active = $request->active;
 
-            $video_lectaure = [];
-            if ($request->video_lectaure) {
-                $request->validate([
-                'video_lectaure' => 'required|max:2000',
-                ]);
+            // $video_lectaure = [];
+            // if ($request->video_lectaure) {
+            //     $request->validate([
+            //     'video_lectaure' => 'required|max:2000',
+            //     ]);
 
-               foreach ($request->video_lectaure as $vid) {
-                $path =uploadImage('assets/admin/uploads', $vid);
-                        $video_lectaure[] = $path;
-                    }
+            //    foreach ($request->video_lectaure as $vid) {
+            //     $path =uploadImage('assets/admin/uploads', $vid);
+            //             $video_lectaure[] = $path;
+            //         }
 
-                    $lectaure->video = json_encode($video_lectaure);
+            //         $lectaure->video = json_encode($video_lectaure);
 
-             }
+            //  }
 
              $data_lectaure = [];
              if ($request->data_lectaure) {
@@ -99,27 +100,27 @@ class LectaureController extends Controller
         $lectaure=Lectaure::findorFail($id);
         try{
             $lectaure->name = $request->get('name');
-
+            $lectaure->video = $request->get('video');
             $lectaure->course_id=$request->get('course');
             $lectaure->active = $request->active;
 
-            $video_lectaure = [];
-            if ($request->file('video_lectaure')) {
-                $request->validate([
-                'video_lectaure.*' => 'required|max:2000',
-                ]);
-                $oldphotoPath = $lectaure->video;
-                foreach ($request->file('video_lectaure') as $vid) {
-                    $path =uploadImage('assets/admin/uploads', $vid);
-                            $video_lectaure[] = $path;
-                            if (file_exists('assets/admin/uploads/' . $oldphotoPath) and !empty($oldphotoPath)) {
-                                unlink('assets/admin/uploads/' . $oldphotoPath);
-                                }
-                        }
+            // $video_lectaure = [];
+            // if ($request->file('video_lectaure')) {
+            //     $request->validate([
+            //     'video_lectaure.*' => 'required|max:2000',
+            //     ]);
+            //     $oldphotoPath = $lectaure->video;
+            //     foreach ($request->file('video_lectaure') as $vid) {
+            //         $path =uploadImage('assets/admin/uploads', $vid);
+            //                 $video_lectaure[] = $path;
+            //                 if (file_exists('assets/admin/uploads/' . $oldphotoPath) and !empty($oldphotoPath)) {
+            //                     unlink('assets/admin/uploads/' . $oldphotoPath);
+            //                     }
+            //             }
 
 
-                        $lectaure->video = json_encode($video_lectaure);
-                }
+            //             $lectaure->video = json_encode($video_lectaure);
+            //     }
 
                 $data_lectaure = [];
                 if ($request->file('data_lectaure')) {

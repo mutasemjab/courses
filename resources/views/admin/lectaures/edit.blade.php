@@ -51,21 +51,15 @@ Edit
 
 <div class="col-md-6">
 
-    <div class="form-group mt-0" id="multi_file">
-        <label for="mobile">video</label>
-        <input type="file"
-            class="form-control @if ($errors->has('video_lectaure')) is-invalid @endif"
-            id="video_lectaure" placeholder="" name="video_lectaure[]">
-        <div class="text-end">
-            <i class="fa fa-plus-circle" id="add_button" style="width: 200px"></i>
+    <div class="col-md-6">
+        <div class="form-group">
+          <label>Video</label>
+          <input name="video" id="video" class="form-control" value="{{ old('video',$data['video']) }}"    >
+          @error('video')
+          <span class="text-danger">{{ $message }}</span>
+          @enderror
         </div>
-
-        @if ($errors->has('video_lectaure'))
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $errors->first('video_lectaure') }}</strong>
-            </span>
-        @endif
-    </div>
+        </div>
 
 </div>
 

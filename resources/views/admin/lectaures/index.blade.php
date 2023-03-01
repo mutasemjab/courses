@@ -56,7 +56,7 @@ show
                 <td><a href="{{route('admin.course.index',['id'=>$info->course->id])}}">{{$info->course->name}}</a>
                 </td>
              <td>{{ $info->name }}</td>
-             <td>{{ $info->url }}</td>
+             <td>{{ $info->video }}</td>
              <td>{{ $info->data }}</td>
              <td>@if($info->active==true) active @else disactive @endif</td>
 
